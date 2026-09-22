@@ -1,12 +1,11 @@
-import { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
-const tailwindConfig: Config = {
+/** @type {import('tailwindcss').Config} */
+export default {
   darkMode: ['class'],
   content: [
-    'src/**/*.{ts,tsx,css}',
-    '../../packages/ui/**/*.{ts,tsx}',
-    '../../packages/components/**/*.{ts,tsx}',
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -51,8 +50,6 @@ const tailwindConfig: Config = {
         },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
-          // Alias so `bg-sidebar-background` resolves like `bg-sidebar` — see
-          // ZITE_TAILWIND_THEME in packages/zite/src/apps.ts for the rationale.
           background: 'hsl(var(--sidebar-background))',
           foreground: 'hsl(var(--sidebar-foreground))',
           primary: 'hsl(var(--sidebar-primary))',
@@ -91,20 +88,12 @@ const tailwindConfig: Config = {
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
       },
       animation: {
@@ -113,7 +102,5 @@ const tailwindConfig: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [],
 };
-
-export default tailwindConfig;
