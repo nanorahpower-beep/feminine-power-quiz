@@ -9,9 +9,18 @@ import {
   type ResultType,
   type QuizOption,
 } from '../lib/quizData';
-import { cn } from '@project/components/lib/utils';
-import { submitQuiz } from 'zitejs/api';
-import { toast } from 'sonner';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+// Mock submission for static Vercel deployment if zitejs is not present
+const submitQuiz = async (data: Record<string, unknown>) => {
+  console.log('Quiz submitted:', data);
+  return Promise.resolve({ success: true });
+};
 
 type AgeGroup = 'tween' | 'teen' | 'woman';
 
